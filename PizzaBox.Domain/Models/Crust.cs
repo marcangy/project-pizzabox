@@ -2,11 +2,13 @@ using PizzaBox.Domain.Abstracts;
 
 namespace PizzaBox.Domain.Models
 {
-public class PresetPizza : APizza
-{
-    public PresetPizza()
-    {
 
+public class Crust : AComponent
+{
+    public Crust()
+    {
+        
     }
 }
+
 }

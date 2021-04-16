@@ -2,34 +2,39 @@
 using System;
 using PizzaBox.Domain.Abstracts;
 using PizzaBox.Domain.Models;
+using PizzaBox.Client.Singleton;
 // using sc = System.Console;
 
 namespace PizzaBox.Client
 {
-    public class Program
+  public class Program
+  {
+    private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance;
+    private static void Main()
     {
-        private static void Main()
-        {
-            var stores = new List<AStore>{new ChicagoStore(), new NewYorkStore()}; //explicit
-          
-            var customers = new List<ACustomer>{new RegCustomer()};
+      PrintStoreList();
+      // for (var x = 0; x < stores.Count; x += 1)
+      // {
+      //     Console.WriteLine($"{x} {stores[x]}");
+      // }
 
-            var specialpizzas = new List<APizza>{new PresetPizza()};
-            var regpizza = new List<APizza>{new CustomPizza()};
-            
-            v
+      // Console.WriteLine("make a selection");
+      // string input = Console.ReadLine();
+      // int entry = int.Parse(input);
 
-            for (var x=0; x < stores.Count; x += 1)
-            {
-                   Console.WriteLine($"{x} {stores[x]}");
-            }
+      // Console.WriteLine(stores[entry]);
 
-            Console.WriteLine("make a selection");
-            string input = Console.ReadLine();
-            int entry = int.Parse(input);
-
-            Console.WriteLine(stores[entry]);
-
-        }
     }
+    private static void PrintStoreList()
+    {
+      var index = 0;
+      foreach (var item in _storeSingleton.Stores)
+      {
+        Console.WriteLine($"{index += 1} {item}");
+      }
+
+
+    }
+
+  }
 }
