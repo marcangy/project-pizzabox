@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAPizza xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <APizza xsi:type="CustomPizza">
+    <Name>Custom Pizza</Name>
+    <TotalPrice>0</TotalPrice>
+  </APizza>
+  <APizza xsi:type="MeatLoversPizza">
+    <Name>Meat Lover's Pizza</Name>
+    <TotalPrice>0</TotalPrice>
+  </APizza>
+  <APizza xsi:type="VeggiePizza">
+    <Name>Veggie Pizza</Name>
+    <TotalPrice>0</TotalPrice>
+  </APizza>
+  <APizza xsi:type="CheesePizza">
+    <Name>Cheese Pizza</Name>
+    <TotalPrice>0</TotalPrice>
+  </APizza>
+</ArrayOfAPizza>

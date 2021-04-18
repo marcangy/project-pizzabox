@@ -3,9 +3,8 @@ using System.Collections.Generic;
 
 namespace PizzaBox.Domain.Models
 {
-  public class MeatLoversPizza : APizza
+  public class VeggiePizza : APizza
   {
-
     protected override void AddCrust()
     {
       Crust = new Crust() { Name = "Original" };
@@ -18,15 +17,14 @@ namespace PizzaBox.Domain.Models
 
     protected override void AddToppings()
     {
-      Toppings = new List<Topping> { new Topping() { Name = "Pepperoni" }, new Topping() { Name = "Bacon" }, new Topping() { Name = "Beef" }, new Topping() { Name = "Cheese" }, new Topping() { Name = "Sauce" } };
+      Toppings = new List<Topping> { new Topping() { Name = "Spinach" }, new Topping() { Name = "Mushroom" }, new Topping() { Name = "Olives" }, new Topping() { Name = "Cheese" }, new Topping() { Name = "Sauce" } };
+
     }
 
-
-    public MeatLoversPizza()
+    public VeggiePizza()
     {
-      Name = "Meat Lover's Pizza";
+      Name = "Veggie Pizza";
       Factory();
     }
-
   }
 }
