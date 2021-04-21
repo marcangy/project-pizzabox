@@ -9,7 +9,7 @@ namespace PizzaBox.Domain.Abstracts
   [XmlInclude(typeof(VeggiePizza))]
   [XmlInclude(typeof(CheesePizza))]
 
-  public abstract class APizza
+  public abstract class APizza : AModel
   {
     public string Name { get; set; }
     public List<Topping> Toppings { get; set; }
@@ -17,7 +17,10 @@ namespace PizzaBox.Domain.Abstracts
     public Crust Crust { get; set; }
     public double TotalPrice { get; set; }
 
-
+    public APizza()
+    {
+      Factory();
+    }
     protected virtual void Factory()
     {
       AddCrust();

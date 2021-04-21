@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfAStore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <AStore xsi:type="NewYorkStore">
+    <EntityID>0</EntityID>
     <Name>NewYorkStore</Name>
+    <Orders />
   </AStore>
   <AStore xsi:type="ChicagoStore">
+    <EntityID>0</EntityID>
     <Name>ChicagoStore</Name>
+    <Orders />
   </AStore>
 </ArrayOfAStore>

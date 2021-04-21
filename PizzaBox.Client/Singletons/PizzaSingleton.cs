@@ -38,11 +38,10 @@ namespace PizzaBox.Client.Singleton
 
     private PizzaSingleton()
     {
-      // _filerepository.WriteFromFile<List<APizza>>(_path, PizzaTest);
-      if (PizzaTest == null)
-      {
-        PizzaTest = _filerepository.ReadFromFile<List<APizza>>(_path);
-      }
+      _filerepository.WriteFromFile<List<APizza>>(_path, PizzaTest);
+
+      PizzaTest = _filerepository.ReadFromFile<List<APizza>>(_path);
+
 
     }
 

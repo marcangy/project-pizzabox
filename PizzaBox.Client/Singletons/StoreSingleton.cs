@@ -42,7 +42,7 @@ namespace PizzaBox.Client.Singleton
 
       StoreTest = _filerepository.ReadFromFile<List<AStore>>(_path);
 
-      // _filerepository.WriteFromFile<List<AStore>>(_path, StoreTest);
+      _filerepository.WriteFromFile<List<AStore>>(_path, StoreTest);
 
     }
 

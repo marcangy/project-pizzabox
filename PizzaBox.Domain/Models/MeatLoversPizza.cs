@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace PizzaBox.Domain.Models
 {
+
   public class MeatLoversPizza : APizza
   {
 
@@ -13,7 +14,7 @@ namespace PizzaBox.Domain.Models
 
     protected override void AddSize()
     {
-      Size = new Size() { Name = "Large" };
+      Size = new Size() { Name = "Large", Price = 11.5 };
     }
 
     protected override void AddToppings()

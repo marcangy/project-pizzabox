@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCrust xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Crust>
+    <EntityID>0</EntityID>
+    <Name>Original</Name>
+    <Price>0</Price>
+  </Crust>
+  <Crust>
+    <EntityID>0</EntityID>
+    <Name>Deep Dish</Name>
+    <Price>0</Price>
+  </Crust>
+  <Crust>
+    <EntityID>0</EntityID>
+    <Name>Thin</Name>
+    <Price>0</Price>
+  </Crust>
+</ArrayOfCrust>
