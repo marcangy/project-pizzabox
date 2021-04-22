@@ -21,7 +21,7 @@ namespace PizzaBox.Domain.Abstracts
     {
       Factory();
     }
-    protected virtual void Factory()
+    public virtual void Factory()
     {
       AddCrust();
       AddSize();
@@ -29,13 +29,13 @@ namespace PizzaBox.Domain.Abstracts
       CalculatePrice();
     }
 
-    protected abstract void AddCrust();
+    public abstract void AddCrust();
 
-    protected abstract void AddSize();
+    public abstract void AddSize();
 
-    protected abstract void AddToppings();
+    public abstract void AddToppings();
 
-    protected virtual double CalculatePrice()
+    public virtual double CalculatePrice()
     {
       var totalToppingPrice = new double();
       //var x = new int();
