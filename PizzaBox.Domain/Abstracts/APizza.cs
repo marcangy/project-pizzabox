@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using PizzaBox.Domain.Models;
 using System.Xml.Serialization;
+using System.Text;
 namespace PizzaBox.Domain.Abstracts
 {
 
@@ -46,6 +47,19 @@ namespace PizzaBox.Domain.Abstracts
       TotalPrice = Crust.Price + Size.Price + totalToppingPrice;
       return TotalPrice;
 
+    }
+
+    public override string ToString()
+    {
+      var stringBuilder = new StringBuilder();
+      var separator = ", ";
+
+      foreach (var item in Toppings)
+      {
+        stringBuilder.Append($"{item}{separator}");
+      }
+
+      return $"{Crust} - {Size} - {stringBuilder.ToString().TrimEnd(separator.ToCharArray())}";
     }
 
 

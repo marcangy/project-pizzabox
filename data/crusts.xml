@@ -8,11 +8,11 @@
   <Crust>
     <EntityID>0</EntityID>
     <Name>Deep Dish</Name>
-    <Price>0</Price>
+    <Price>1</Price>
   </Crust>
   <Crust>
     <EntityID>0</EntityID>
     <Name>Thin</Name>
-    <Price>0</Price>
+    <Price>1</Price>
   </Crust>
 </ArrayOfCrust>

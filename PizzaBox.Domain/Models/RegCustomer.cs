@@ -8,7 +8,6 @@ namespace PizzaBox.Domain.Models
     public RegCustomer()
     {
       Name = "Marcangy Cange";
-      ID = 54720;
     }
   }
 

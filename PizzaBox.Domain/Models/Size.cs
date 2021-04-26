@@ -5,14 +5,14 @@ namespace PizzaBox.Domain.Models
 
   public class Size : AComponent
   {
-    public Size SizeLarge()
+    public void SizeLarge()
     {
-      Size size = new Size()
-      {
-        Name = "Large",
-        Price = 11.5
-      };
-      return size;
+
+      Name = "Large";
+      Price = 11.5;
+
+
+
 
     }
     public void SizeMedium()

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAOrder xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AOrder xsi:type="RegOrder">
+    <EntityID>0</EntityID>
+    <ID>0</ID>
+    <Pizzas />
+  </AOrder>
+  <AOrder xsi:type="RegOrder">
+    <EntityID>0</EntityID>
+    <ID>0</ID>
+    <Store xsi:type="NewYorkStore">
+      <EntityID>1</EntityID>
+      <Name>Da Best NY Pizza</Name>
+    </Store>
+    <Customer>
+      <EntityID>0</EntityID>
+      <Name>Marcangy Cange</Name>
+    </Customer>
+    <Pizzas>
+      <APizza xsi:type="MeatLoversPizza">
+        <EntityID>2</EntityID>
+        <Name>Meat Lover's Pizza</Name>
+        <Toppings>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Pepperoni</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Bacon</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Beef</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Cheese</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Sauce</Name>
+            <Price>1.5</Price>
+          </Topping>
+        </Toppings>
+        <Size>
+          <EntityID>0</EntityID>
+          <Name>Large</Name>
+          <Price>11.5</Price>
+        </Size>
+        <Crust>
+          <EntityID>0</EntityID>
+          <Name>Original</Name>
+          <Price>0</Price>
+        </Crust>
+        <TotalPrice>19</TotalPrice>
+      </APizza>
+      <APizza xsi:type="VeggiePizza">
+        <EntityID>3</EntityID>
+        <Name>Veggie Pizza</Name>
+        <Toppings>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Spinach</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Mushroom</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Olives</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Cheese</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Sauce</Name>
+            <Price>1.5</Price>
+          </Topping>
+        </Toppings>
+        <Size>
+          <EntityID>0</EntityID>
+          <Name>Large</Name>
+          <Price>11.5</Price>
+        </Size>
+        <Crust>
+          <EntityID>0</EntityID>
+          <Name>Original</Name>
+          <Price>0</Price>
+        </Crust>
+        <TotalPrice>19</TotalPrice>
+      </APizza>
+      <APizza xsi:type="CheesePizza">
+        <EntityID>4</EntityID>
+        <Name>Cheese Pizza</Name>
+        <Toppings>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Cheese</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Cheese</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Cheese</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Cheese</Name>
+            <Price>1.5</Price>
+          </Topping>
+          <Topping>
+            <EntityID>0</EntityID>
+            <Name>Sauce</Name>
+            <Price>1.5</Price>
+          </Topping>
+        </Toppings>
+        <Size>
+          <EntityID>0</EntityID>
+          <Name>Large</Name>
+          <Price>11.5</Price>
+        </Size>
+        <Crust>
+          <EntityID>0</EntityID>
+          <Name>Original</Name>
+          <Price>0</Price>
+        </Crust>
+        <TotalPrice>19</TotalPrice>
+      </APizza>
+    </Pizzas>
+  </AOrder>
+</ArrayOfAOrder>
