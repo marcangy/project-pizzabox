@@ -17,6 +17,7 @@ namespace PizzaBox.Domain.Abstracts
     public Size Size { get; set; }
     public Crust Crust { get; set; }
     public double TotalPrice { get; set; }
+    public virtual ICollection<AOrder> Orders { get; set; }
 
     public APizza()
     {
@@ -59,7 +60,7 @@ namespace PizzaBox.Domain.Abstracts
         stringBuilder.Append($"{item}{separator}");
       }
 
-      return $"{Crust} - {Size} - {stringBuilder.ToString().TrimEnd(separator.ToCharArray())}";
+      return $"{Name} - {Crust} - {Size} - {stringBuilder.ToString().TrimEnd(separator.ToCharArray())}";
     }
 
 

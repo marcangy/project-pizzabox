@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace PizzaBox.Domain.Abstracts
 {
@@ -10,7 +11,9 @@ namespace PizzaBox.Domain.Abstracts
 
     public override string ToString()
     {
-      return Name;
+
+      return $"{Name} - {EntityID}";
     }
+
   }
 }

@@ -12,6 +12,8 @@ namespace PizzaBox.Domain.Abstracts
     public AStore Store { get; set; }
     public ACustomer Customer { get; set; }
     public List<APizza> Pizzas { get; set; }
+
+
     public double TotalCost
     {
       get

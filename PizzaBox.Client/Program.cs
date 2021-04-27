@@ -69,7 +69,7 @@ namespace PizzaBox.Client
       PrintPizzaList();
       order.Pizzas = SelectPizza();
       PrintOrder(order);
-      //order.Store.Orders.Add(order);
+
       do
       {
         PrintOptionsList();
@@ -144,7 +144,7 @@ namespace PizzaBox.Client
       foreach (var item in pizzas)
       {
         item.CalculatePrice();
-        Console.WriteLine($"{"1"} {index += 1} {item.Name} {item.TotalPrice}");
+        Console.WriteLine($"{"1"} {index += 1} {item.ToString()} {item.TotalPrice}");
 
 
       }
@@ -157,24 +157,24 @@ namespace PizzaBox.Client
     {
 
       Console.WriteLine("Here are all your past orders for your current store");
-      var index = -1;
+      var orderindex = -1;
       var orderent = new long();
       foreach (var orderitem in store.Orders)
       {
-        index++;
-        if (store.Orders[index].Customer.Name == customer.Name)
+        orderindex++;
+        if (store.Orders[orderindex].Customer.Name == customer.Name)
         {
-          List<APizza> pizzas = store.Orders[index].Pizzas;
-          orderent = store.Orders[index].EntityID;
-          int index2 = -1;
-          Console.WriteLine($"{"///////"} {"Order Number:"}{orderent} {"///////"}");
+          List<APizza> pizzas = store.Orders[orderindex].Pizzas;
+          orderent = store.Orders[orderindex].EntityID;
+          int Pizzaindex = -1;
+          Console.WriteLine($"{"-------"} {"Order Number:"} {orderent} {"-------"}");
           foreach (var item in pizzas)
           {
-            index2++;
-            Console.WriteLine($" {index2} {item.Name} {item.TotalPrice}");
+            Pizzaindex++;
+            Console.WriteLine($" {Pizzaindex} {item.ToString()} {item.TotalPrice}");
 
           }
-          Console.WriteLine($"{"Order Total"} {store.Orders[index].TotalCost}");
+          Console.WriteLine($"{"Order Total"} {store.Orders[orderindex].TotalCost}");
         }
 
       }
@@ -188,11 +188,11 @@ namespace PizzaBox.Client
       {
         Console.WriteLine("What would you like to change");
 
-        Console.WriteLine($"{0}{"-"} {"Change Size"}");
-        Console.WriteLine($"{1}{"-"} {"Change Crust"}");
-        Console.WriteLine($"{2}{"-"} {"Add Toppings"}");
-        Console.WriteLine($"{3}{"-"} {"Remove Toppings"}");
-        Console.WriteLine($"{4}{"-"} {"Exit"}");
+        Console.WriteLine($"{0} {"-"} {"Change Size"}");
+        Console.WriteLine($"{1} {"-"} {"Change Crust"}");
+        Console.WriteLine($"{2} {"-"} {"Add Toppings"}");
+        Console.WriteLine($"{3} {"-"} {"Remove Toppings"}");
+        Console.WriteLine($"{4} {"-"} {"Exit"}");
 
 
         var valid = int.TryParse(Console.ReadLine(), out choice);
@@ -368,7 +368,7 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _pizzaSingleton.Pizzas)
       {
-        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.ToString()}");
 
       }
       Console.WriteLine($"{index += 1}{"-"} {"Print Order"}");
@@ -379,10 +379,10 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _toppingsSingleton.Toppings)
       {
-        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
+        Console.WriteLine($"{index += 1} {"-"} {item.ToFormat()}");
 
       }
-      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
+      Console.WriteLine($"{index += 1} {"-"} {"Exit"}");
 
     }
 
@@ -391,7 +391,7 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in Pizza.Toppings)
       {
-        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.ToFormat()}");
 
       }
       Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
@@ -403,7 +403,7 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _sizeSingleton.Sizes)
       {
-        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.ToFormat()}");
 
       }
       Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
@@ -416,10 +416,10 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _crustsSingleton.Crusts)
       {
-        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
+        Console.WriteLine($"{index += 1} {"-"} {item.ToFormat()}");
 
       }
-      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
+      Console.WriteLine($"{index += 1} {"-"} {"Exit"}");
 
     }
     private static void PrintCustomerList()
@@ -427,10 +427,10 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _customerSingleton.Customers)
       {
-        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
+        Console.WriteLine($"{index += 1} {"-"} {item.ToString()}");
 
       }
-      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
+      Console.WriteLine($"{index += 1} {"-"} {"Exit"}");
 
     }
 

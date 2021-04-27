@@ -10,5 +10,10 @@ namespace PizzaBox.Domain.Abstracts
     {
       return Name;
     }
+
+    public string ToFormat()
+    {
+      return $"{Name} - {Price}";
+    }
   }
 }
