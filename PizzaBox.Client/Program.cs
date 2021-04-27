@@ -4,6 +4,7 @@ using PizzaBox.Domain.Abstracts;
 using PizzaBox.Domain.Models;
 using PizzaBox.Client.Singleton;
 using PizzaBox.Storing.Repositories;
+using System.Linq;
 // using sc = System.Console;
 
 namespace PizzaBox.Client
@@ -52,12 +53,20 @@ namespace PizzaBox.Client
           Console.WriteLine($"{"Please type in your name"}");
           customername = Console.ReadLine();
           order.Customer = new RegCustomer() { Name = customername };
+
+
         }
         else
         {
-          Console.WriteLine("Please Select a Customer");
-          PrintCustomerList();
-          order.Customer = SelectCustomer();
+          Console.WriteLine("Please Enter your EntityID");
+          valid = long.TryParse(Console.ReadLine(), out long entityselect);
+          if (!valid)
+          {
+            continue;
+          }
+          order.Customer = FindCustomer(entityselect);
+          //PrintCustomerList();
+          //order.Customer = SelectCustomer();
         }
       } while (order.Customer == null);
 
@@ -112,6 +121,9 @@ namespace PizzaBox.Client
         {
           //Cashout - Add Order to the Database
           _orderRepository.Create(order);
+          Console.WriteLine($"{"Name:"} {order.Customer.Name}");
+          Console.WriteLine($"{"Entity ID:"} {order.Customer.EntityID}");
+
 
         }
 
@@ -179,6 +191,14 @@ namespace PizzaBox.Client
 
       }
 
+    }
+
+    private static ACustomer FindCustomer(long EntityId)
+    {
+
+
+      var customer = _context.Customers.FirstOrDefault(c => c.EntityID == EntityId);
+      return customer;
     }
 
     private static APizza ModifyPizza(APizza pizza)

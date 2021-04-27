@@ -31,5 +31,8 @@ namespace PizzaBox.Client.Singleton
       _context = context;
       Customers = _context.Customers.ToList();
     }
+
+
+
   }
 }
