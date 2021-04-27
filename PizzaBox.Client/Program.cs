@@ -12,9 +12,10 @@ namespace PizzaBox.Client
   {
     private static readonly ToppingsSingleton _toppingsSingleton = ToppingsSingleton.Instance;
     private static readonly CrustSingleton _crustsSingleton = CrustSingleton.Instance;
+
     private static readonly SizeSingleton _sizeSingleton = SizeSingleton.Instance;
     private static readonly PizzaBoxContext _context = new PizzaBoxContext();
-
+    private static readonly CustomerSingleton _customerSingleton = CustomerSingleton.Instance(_context);
     private static readonly StoreSingleton _storeSingleton = StoreSingleton.Instance(_context);
     private static readonly PizzaSingleton _pizzaSingleton = PizzaSingleton.Instance(_context);
     //private static readonly OrderSingleton _orderSingleton = OrderSingleton.Instance;
@@ -34,8 +35,32 @@ namespace PizzaBox.Client
       List<AOrder> vieworderlist = new List<AOrder>();
       int option = new int();
       var order = new RegOrder();
+      string customername = "";
+      do
+      {
+        Console.WriteLine($"{0}{"-"} {"New Customer"}");
+        Console.WriteLine($"{1}{"-"} {"Returning Customer"}");
+        Console.WriteLine($"{2}{"-"} {"Store Login"}");
+        var valid = int.TryParse(Console.ReadLine(), out int customerselect);
+        if (!valid || customerselect > 2)
+        {
+          continue;
+        }
 
-      order.Customer = new RegCustomer();
+        if (customerselect == 0)
+        {
+          Console.WriteLine($"{"Please type in your name"}");
+          customername = Console.ReadLine();
+          order.Customer = new RegCustomer() { Name = customername };
+        }
+        else
+        {
+          Console.WriteLine("Please Select a Customer");
+          PrintCustomerList();
+          order.Customer = SelectCustomer();
+        }
+      } while (order.Customer == null);
+
       Console.WriteLine("Welcome to PizzaBox" + " " + order.Customer.Name);
       PrintStoreList();
       Console.WriteLine("Please Select a Store");
@@ -106,7 +131,7 @@ namespace PizzaBox.Client
         {
           break;
         }
-      } while (option != 5);
+      } while (option != 6);
 
 
 
@@ -118,6 +143,7 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in pizzas)
       {
+        item.CalculatePrice();
         Console.WriteLine($"{"1"} {index += 1} {item.Name} {item.TotalPrice}");
 
 
@@ -132,17 +158,20 @@ namespace PizzaBox.Client
 
       Console.WriteLine("Here are all your past orders for your current store");
       var index = -1;
+      var orderent = new long();
       foreach (var orderitem in store.Orders)
       {
         index++;
         if (store.Orders[index].Customer.Name == customer.Name)
         {
           List<APizza> pizzas = store.Orders[index].Pizzas;
+          orderent = store.Orders[index].EntityID;
           int index2 = -1;
+          Console.WriteLine($"{"///////"} {"Order Number:"}{orderent} {"///////"}");
           foreach (var item in pizzas)
           {
             index2++;
-            Console.WriteLine($"{"1"} {index2} {item.Name} {item.TotalPrice}");
+            Console.WriteLine($" {index2} {item.Name} {item.TotalPrice}");
 
           }
           Console.WriteLine($"{"Order Total"} {store.Orders[index].TotalCost}");
@@ -159,11 +188,11 @@ namespace PizzaBox.Client
       {
         Console.WriteLine("What would you like to change");
 
-        Console.WriteLine($"{0} {"Change Size"}");
-        Console.WriteLine($"{1} {"Change Crust"}");
-        Console.WriteLine($"{2} {"Add Toppings"}");
-        Console.WriteLine($"{3} {"Remove Toppings"}");
-        Console.WriteLine($"{4} {"Exit"}");
+        Console.WriteLine($"{0}{"-"} {"Change Size"}");
+        Console.WriteLine($"{1}{"-"} {"Change Crust"}");
+        Console.WriteLine($"{2}{"-"} {"Add Toppings"}");
+        Console.WriteLine($"{3}{"-"} {"Remove Toppings"}");
+        Console.WriteLine($"{4}{"-"} {"Exit"}");
 
 
         var valid = int.TryParse(Console.ReadLine(), out choice);
@@ -202,7 +231,7 @@ namespace PizzaBox.Client
 
         if (choice == 2)
         {
-          if (pizza.GetType().Equals(typeof(CustomPizza)))
+          if (pizza.Name == "Custom Pizza")
           {
             do
             {
@@ -256,6 +285,7 @@ namespace PizzaBox.Client
           break;
         }
       } while (choice != 4);
+      pizza.CalculatePrice();
       return pizza;
 
     }
@@ -268,6 +298,18 @@ namespace PizzaBox.Client
       }
 
       return _storeSingleton.Stores[value];
+
+    }
+
+    private static ACustomer SelectCustomer()
+    {
+      var valid = int.TryParse(Console.ReadLine(), out int value);
+      if (!valid)
+      {
+        return null;
+      }
+
+      return _customerSingleton.Customers[value];
 
     }
     private static List<APizza> SelectPizza()
@@ -315,7 +357,7 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _storeSingleton.Stores)
       {
-        Console.WriteLine($"{index += 1} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
       }
 
 
@@ -326,10 +368,10 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _pizzaSingleton.Pizzas)
       {
-        Console.WriteLine($"{index += 1} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
 
       }
-      Console.WriteLine($"{index += 1} {"Print Order"}");
+      Console.WriteLine($"{index += 1}{"-"} {"Print Order"}");
 
     }
     private static void PrintToppingsList()
@@ -337,10 +379,10 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _toppingsSingleton.Toppings)
       {
-        Console.WriteLine($"{index += 1} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
 
       }
-      Console.WriteLine($"{index += 1} {"Exit"}");
+      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
 
     }
 
@@ -349,10 +391,10 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in Pizza.Toppings)
       {
-        Console.WriteLine($"{index += 1} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
 
       }
-      Console.WriteLine($"{index += 1} {"Exit"}");
+      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
 
     }
 
@@ -361,10 +403,10 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _sizeSingleton.Sizes)
       {
-        Console.WriteLine($"{index += 1} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
 
       }
-      Console.WriteLine($"{index += 1} {"Exit"}");
+      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
 
     }
 
@@ -374,23 +416,34 @@ namespace PizzaBox.Client
       var index = -1;
       foreach (var item in _crustsSingleton.Crusts)
       {
-        Console.WriteLine($"{index += 1} {item.Name}");
+        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
 
       }
-      Console.WriteLine($"{index += 1} {"Exit"}");
+      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
+
+    }
+    private static void PrintCustomerList()
+    {
+      var index = -1;
+      foreach (var item in _customerSingleton.Customers)
+      {
+        Console.WriteLine($"{index += 1}{"-"} {item.Name}");
+
+      }
+      Console.WriteLine($"{index += 1}{"-"} {"Exit"}");
 
     }
 
     private static void PrintOptionsList()
     {
       Console.WriteLine("Options");
-      Console.WriteLine($"{0} {"Modify Pizza"}");
-      Console.WriteLine($"{1} {"Add Pizza"}");
-      Console.WriteLine($"{2} {"Remove Pizza"}");
-      Console.WriteLine($"{3} {"Cash Out"}");
-      Console.WriteLine($"{4} {"View Order"}");
-      Console.WriteLine($"{5} {"View All Orders"}");
-      Console.WriteLine($"{6} {"Exit"}");
+      Console.WriteLine($"{0}{"-"} {"Modify Pizza"}");
+      Console.WriteLine($"{1}{"-"} {"Add Pizza"}");
+      Console.WriteLine($"{2}{"-"} {"Remove Pizza"}");
+      Console.WriteLine($"{3}{"-"} {"Cash Out"}");
+      Console.WriteLine($"{4}{"-"} {"View Order"}");
+      Console.WriteLine($"{5}{"-"} {"View All Orders"}");
+      Console.WriteLine($"{6}{"-"} {"Exit"}");
     }
 
 

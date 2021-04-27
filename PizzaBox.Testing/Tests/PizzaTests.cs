@@ -21,9 +21,17 @@ namespace PizzaBox.Testing.Tests
     public void Test_PizzaContents(APizza pizza)
     {
       Assert.NotNull(pizza.Name);
+      Assert.IsType<string>(pizza.Name);
       Assert.NotNull(pizza.Size);
+      Assert.IsType<Size>(pizza.Size);
+      Assert.NotNull(pizza.Size.Price);
+      Assert.IsType<double>(pizza.Size.Price);
       Assert.NotNull(pizza.Toppings);
+      Assert.IsType<List<Topping>>(pizza.Toppings);
       Assert.NotNull(pizza.Crust);
+      Assert.IsType<Crust>(pizza.Crust);
+      Assert.NotNull(pizza.Crust.Name);
+      Assert.IsType<string>(pizza.Name);
       Assert.NotNull(pizza.Size);
       Assert.Equal(pizza.TotalPrice, pizza.CalculatePrice());
 

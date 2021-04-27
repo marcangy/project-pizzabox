@@ -42,6 +42,7 @@ namespace PizzaBox.Storing.Repositories
       builder.Entity<AOrder>().HasMany<APizza>(o => o.Pizzas).WithOne();
 
       builder.Entity<ACustomer>().HasKey(e => e.EntityID);
+      builder.Entity<RegCustomer>().HasBaseType<ACustomer>();
       builder.Entity<ACustomer>().HasMany<AOrder>().WithOne();
 
       builder.Entity<APizza>().HasKey(e => e.EntityID);

@@ -42,7 +42,7 @@ namespace PizzaBox.Client.Singleton
       // _filerepository.WriteFromFile<List<APizza>>(_path, PizzaTest);
 
       // PizzaTest = _filerepository.ReadFromFile<List<APizza>>(_path);
-      // _context.Pizzas.AddRange(PizzaTest);
+      //_context.Pizzas.AddRange(PizzaTest);
       // _context.SaveChanges();
       PizzaTest = _context.Pizzas.ToList();
 
