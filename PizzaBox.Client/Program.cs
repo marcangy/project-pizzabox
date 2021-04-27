@@ -337,11 +337,7 @@ namespace PizzaBox.Client
         }
 
         selectedPizzas.Add(_pizzaSingleton.Pizzas[value]);
-        TotalPizzaCost += _pizzaSingleton.Pizzas[value].TotalPrice;
-
-        {
-
-        }
+        TotalPizzaCost += _pizzaSingleton.Pizzas[value].CalculatePrice();
 
       } while (selectedPizzas.Count < 50 & TotalPizzaCost < 250.0);
 
